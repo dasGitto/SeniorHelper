@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Senior's Passport Guide · Canada</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+  <title>Senior’s Passport Guide · mobile + checkboxes</title>
   <style>
-    /* simple, soft, senior-friendly design */
+    /* simple, soft, senior-friendly design – fully responsive */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -15,198 +15,228 @@
     body {
       background: #f2f2f2;
       font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-      font-size: 20px;        /* larger base font for easy reading */
-      line-height: 1.6;
+      font-size: clamp(18px, 4vw, 22px);  /* responsive base */
+      line-height: 1.5;
       color: #1e2b3c;
-      padding: 30px 20px;
+      padding: 15px 12px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* main card – extra contrast, big borders */
+    /* main card – extra contrast, big borders, fluid width */
     .app-container {
-      max-width: 1000px;
+      max-width: 1100px;
+      width: 100%;
       margin: 0 auto;
       background: white;
-      border-radius: 40px;      /* soft rounded corners */
+      border-radius: 40px;
       box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      border: 3px solid #003f5c; /* canada blue‑ish */
+      border: 3px solid #003f5c;
     }
 
     /* header with canada symbol */
     .header {
-      background: #003f5c;       /* deep blue */
+      background: #003f5c;
       color: white;
-      padding: 35px 30px 30px 30px;
+      padding: 25px 20px 20px;
       text-align: center;
     }
     .header h1 {
-      font-size: 3rem;           /* big title */
+      font-size: clamp(2.4rem, 8vw, 3.8rem);
       font-weight: 500;
       margin-bottom: 5px;
-      letter-spacing: 1px;
+      line-height: 1.2;
     }
     .header p {
-      font-size: 1.8rem;
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
       opacity: 0.9;
       font-weight: 300;
     }
     .header .maple {
-      font-size: 3.5rem;
+      font-size: clamp(3rem, 10vw, 4.5rem);
       line-height: 1;
-      margin-bottom: 5px;
     }
 
-    /* main step area */
+    /* main content area – fluid padding */
     .content {
-      padding: 35px 40px 45px 40px;
+      padding: clamp(20px, 5vw, 40px);
     }
 
-    /* big clickable step cards */
+    /* big welcome */
+    .welcome-banner {
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
+      background: #d9eaf5;
+      padding: 20px 25px;
+      border-radius: 40px;
+      margin-bottom: 25px;
+      font-weight: 500;
+    }
+
+    /* step list – each card now has its own checkbox on the card */
     .step-list {
       display: flex;
       flex-direction: column;
-      gap: 22px;
-      margin: 35px 0 25px;
+      gap: 20px;
+      margin: 25px 0;
     }
 
     .step-card {
       background: #f6f9fc;
-      border-left: 16px solid #0077be;  /* bright blue accent */
+      border-left: 16px solid #0077be;
       border-radius: 30px;
-      padding: 20px 35px 20px 35px;
+      padding: 18px 22px 18px 22px;
       box-shadow: 0 5px 12px rgba(0, 40, 60, 0.08);
       transition: 0.2s ease;
-      cursor: pointer;                  /* makes it feel clickable */
       border: 2px solid transparent;
+      cursor: pointer;
     }
     .step-card:hover {
       background: #e1f0fa;
       border-color: #003f5c;
-      transform: scale(1.01);
     }
-    /* (click works, but we also keep it readable without click) */
 
-    .step-number {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #0077be;
-      letter-spacing: 1px;
-      margin-bottom: 6px;
+    /* header of each card: number, title, and its own checkbox */
+    .step-header {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 10px;
+      gap: 12px 15px;
+      margin-bottom: 8px;
     }
-    .step-number span {
+    .step-number-badge {
       background: #0077be;
       color: white;
       border-radius: 60px;
-      width: 45px;
-      height: 45px;
+      min-width: 50px;
+      height: 50px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      font-weight: 500;
-    }
-
-    .step-title {
       font-size: 2.2rem;
       font-weight: 600;
-      margin-bottom: 10px;
+      padding: 0 5px;
+    }
+    .step-title {
+      font-size: clamp(1.9rem, 5vw, 2.4rem);
+      font-weight: 600;
       color: #00263b;
+      flex: 1;
+    }
+    /* custom checkbox bigger */
+    .card-check {
+      transform: scale(1.6);
+      margin-right: 10px;
+      accent-color: #0077be;
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    /* keep label invisible but accessible */
+    .card-check-label {
+      font-size: 0;   /* hide, but interactive */
     }
 
     .step-desc {
-      font-size: 1.7rem;
+      font-size: clamp(1.6rem, 4vw, 1.9rem);
       color: #1f3a4b;
       margin-bottom: 15px;
+      margin-left: 5px;
+      padding-right: 15px;
     }
 
     .extra-info {
-      font-size: 1.7rem;
+      font-size: clamp(1.5rem, 4vw, 1.8rem);
       background: white;
-      padding: 20px 25px;
+      padding: 18px 22px;
       border-radius: 30px;
-      margin: 12px 0 5px 0;
+      margin: 15px 0 5px 0;
       border: 2px dashed #a0c8e0;
       color: #003153;
       line-height: 1.5;
     }
-
     .extra-info p {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
-
     .extra-info ul {
-      margin-left: 30px;
+      margin-left: 25px;
       list-style-type: disc;
     }
 
-    /* simple checklist */
+    /* hidden until card clicked */
+    .step-card .hidden-detail {
+      display: none;
+    }
+    .step-card.open .hidden-detail {
+      display: block;
+    }
+
+    /* checklist (global) */
     .checklist {
       background: #fff6df;
       border-radius: 40px;
-      padding: 25px 35px;
+      padding: clamp(18px, 4vw, 30px);
       margin: 30px 0 25px;
       border: 3px solid #f4b942;
     }
     .checklist h3 {
-      font-size: 2.2rem;
+      font-size: clamp(2rem, 5.5vw, 2.6rem);
       font-weight: 600;
       color: #2d4d5a;
       margin-bottom: 15px;
       display: flex;
       align-items: center;
       gap: 15px;
+      flex-wrap: wrap;
     }
     .checklist-items {
       display: flex;
       flex-direction: column;
-      gap: 17px;
+      gap: 15px;
     }
     .check-item {
-      font-size: 2rem;
+      font-size: clamp(1.7rem, 4.5vw, 2.1rem);
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 15px;
       background: white;
-      padding: 10px 25px;
+      padding: 12px 20px;
       border-radius: 50px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
     .check-item input[type="checkbox"] {
-      width: 35px;
-      height: 35px;
+      width: 32px;
+      height: 32px;
       transform: scale(1.2);
-      cursor: pointer;
       accent-color: #0077be;
-    }
-    .check-item label {
-      flex: 1;
+      flex-shrink: 0;
     }
 
-    /* big CTA / buttons */
+    /* help buttons responsive grid */
     .help-buttons {
       display: flex;
       flex-wrap: wrap;
-      gap: 18px;
-      margin: 40px 0 20px;
+      gap: 15px;
+      margin: 30px 0 20px;
       justify-content: center;
     }
     .help-btn {
       background: white;
       border: 4px solid #003f5c;
-      padding: 22px 35px;
-      font-size: 2rem;
+      padding: 18px 20px;
+      font-size: clamp(1.8rem, 5vw, 2.4rem);
       font-weight: 600;
       border-radius: 60px;
       color: #003f5c;
       cursor: pointer;
-      transition: all 0.2s;
-      flex: 1 1 auto;
-      min-width: 250px;
+      transition: 0.2s;
+      flex: 1 1 220px;
       text-align: center;
       box-shadow: 0 6px 0 #c0d4df;
+      touch-action: manipulation;
     }
     .help-btn:hover {
       background: #003f5c;
@@ -216,256 +246,266 @@
       transform: translateY(-4px);
     }
 
-    /* passport office panel */
     .contact-panel {
       background: #e4edf2;
       border-radius: 40px;
-      padding: 25px 35px;
-      font-size: 1.9rem;
+      padding: clamp(18px, 4vw, 28px);
+      font-size: clamp(1.6rem, 4vw, 2rem);
       border: 3px solid #003f5c;
       margin-top: 20px;
     }
     .contact-panel h2 {
-      font-size: 2.4rem;
+      font-size: clamp(2.2rem, 5vw, 2.8rem);
       margin-bottom: 15px;
       color: #003153;
     }
     .contact-row {
       display: flex;
       align-items: center;
-      gap: 20px;
-      margin: 20px 0;
+      gap: 15px;
+      margin: 15px 0;
       background: white;
-      padding: 15px 25px;
+      padding: 12px 18px;
       border-radius: 50px;
+      flex-wrap: wrap;
     }
     .contact-row span {
-      font-size: 2.8rem;
+      font-size: 2.4rem;
     }
 
-    /* important note */
     .note {
-      font-size: 1.7rem;
+      font-size: clamp(1.5rem, 4vw, 1.9rem);
       background: #fef0db;
-      padding: 20px 25px;
+      padding: 18px 22px;
       border-radius: 30px;
       margin: 25px 0;
       border-left: 12px solid #d67e00;
     }
 
-    /* footer */
     .footer {
       background: #edf4f9;
       text-align: center;
-      padding: 20px;
-      font-size: 1.7rem;
+      padding: 15px;
+      font-size: clamp(1.4rem, 3.5vw, 1.7rem);
       border-top: 2px solid #bdd8e7;
     }
 
-    /* show/hide details – simple click toggle */
-    .hidden-detail {
-      display: none;
+    /* make checkboxes inside cards also functional, prevent event clash */
+    .step-card input[type="checkbox"] {
+      pointer-events: auto; 
+      position: relative;
+      z-index: 5;
     }
-    .step-card.open .hidden-detail {
-      display: block;
+    /* but clicking on the rest of card toggles open/close */
+    .step-card {
+      position: relative;
     }
-
-    /* mobile/large readability */
-    @media (max-width: 650px) {
-      body { font-size: 18px; padding: 15px; }
-      .header h1 { font-size: 2.6rem; }
-      .step-title { font-size: 2rem; }
-      .step-desc { font-size: 1.6rem; }
-      .help-btn { font-size: 1.8rem; padding: 18px 20px; }
-      .check-item { font-size: 1.7rem; }
+    /* avoid toggling when clicking directly on checkbox */
+    .step-card input[type="checkbox"] {
+      pointer-events: auto;
     }
   </style>
 </head>
 <body>
 <div class="app-container">
-  <!-- header with friendly maple leaf -->
   <div class="header">
     <div class="maple">🍁</div>
     <h1>Canadian Passport Guide</h1>
-    <p>for seniors &amp; non‑technical folks</p>
+    <p>clear steps · large text · checkboxes</p>
   </div>
 
   <div class="content">
-    <!-- big intro message -->
-    <div style="font-size: 2rem; margin-bottom: 20px; background: #d9eaf5; padding: 25px; border-radius: 40px;">
-      🌟 <strong>You can do this!</strong> We explain every step simply. Just follow the steps below.
+    <div class="welcome-banner">
+      🌟 <strong>You can do this!</strong> Tap each step to expand. Tick checkboxes as you go.
     </div>
 
-    <!-- clickable steps (accordion-like) -->
+    <!-- STEP LIST – each step card now contains its own checkbox -->
     <div class="step-list">
       <!-- STEP 1 -->
-      <div class="step-card" onclick="toggleStep(this)" role="button" tabindex="0" aria-label="Click to expand step 1">
-        <div class="step-number"><span>1</span> GET THE RIGHT FORMS</div>
-        <div class="step-title">📄 Application form (simplified)</div>
-        <div class="step-desc">You need form <strong>PPTC 153</strong> for a new adult passport.</div>
+      <div class="step-card" onclick="toggleStep(event, this)" role="button" tabindex="0">
+        <div class="step-header">
+          <span class="step-number-badge">1</span>
+          <span class="step-title">📄 Get the right forms</span>
+          <!-- individual checkbox for step 1 -->
+          <input type="checkbox" class="card-check" id="step1chk" aria-label="Mark step 1 done">
+        </div>
+        <div class="step-desc"><strong>Form PPTC 153</strong> – application for adult passport.</div>
         <div class="extra-info hidden-detail">
           <p>✉️ <strong>How to get it:</strong></p>
           <ul>
-            <li>Pick up at any <strong>Service Canada Centre</strong> or post office (they have large‑print version on request).</li>
-            <li>Call <strong>1-800-567-6868</strong> (toll-free) and ask them to mail the form to your home.</li>
-            <li>Ask a family member to print it from <strong>Canada.ca/passport</strong> (if you have a computer).</li>
+            <li>Pick up at any <strong>Service Canada Centre</strong> or post office (large‑print available).</li>
+            <li>Call <strong>1-800-567-6868</strong> to have it mailed to you.</li>
+            <li>Ask someone to print it from <strong>Canada.ca/passport</strong>.</li>
           </ul>
-          <p style="margin-top: 12px;">🖊️ Fill with BLACK ink, capital letters.</p>
+          <p>🖊️ Fill with BLACK ink, capital letters.</p>
         </div>
       </div>
 
       <!-- STEP 2 -->
-      <div class="step-card" onclick="toggleStep(this)" role="button" tabindex="0">
-        <div class="step-number"><span>2</span> GATHER PROOF & PHOTOS</div>
-        <div class="step-title">🪪 Citizenship & ID</div>
-        <div class="step-desc">Birth certificate OR Canadian citizenship certificate.</div>
+      <div class="step-card" onclick="toggleStep(event, this)" role="button" tabindex="0">
+        <div class="step-header">
+          <span class="step-number-badge">2</span>
+          <span class="step-title">🪪 Citizenship & photo ID</span>
+          <input type="checkbox" class="card-check" id="step2chk" aria-label="Mark step 2 done">
+        </div>
+        <div class="step-desc">Birth certificate OR citizenship certificate + 2 photos.</div>
         <div class="extra-info hidden-detail">
           <p><strong>You also need:</strong></p>
           <ul>
-            <li>1 piece of photo ID (driver’s licence, provincial ID, age of majority card).</li>
-            <li>2 identical passport photos – <em>must be taken within last 6 months</em>.</li>
-            <li>If your name is different from birth certificate, bring marriage certificate or legal name change.</li>
+            <li>1 piece of photo ID (driver’s licence, provincial ID).</li>
+            <li>2 identical passport photos – <em>taken within last 6 months</em>.</li>
+            <li>If your name changed: marriage certificate or legal name change.</li>
           </ul>
-          <p>📸 Photos must have the guarantor's signature on the back (see step 3).</p>
         </div>
       </div>
 
       <!-- STEP 3 -->
-      <div class="step-card" onclick="toggleStep(this)" role="button" tabindex="0">
-        <div class="step-number"><span>3</span> GUARANTOR & REFERENCES</div>
-        <div class="step-title">✍️ Find a guarantor</div>
-        <div class="step-desc">A guarantor is someone who has known you for at least 2 years.</div>
+      <div class="step-card" onclick="toggleStep(event, this)" role="button" tabindex="0">
+        <div class="step-header">
+          <span class="step-number-badge">3</span>
+          <span class="step-title">✍️ Guarantor & references</span>
+          <input type="checkbox" class="card-check" id="step3chk" aria-label="Mark step 3 done">
+        </div>
+        <div class="step-desc">Someone who knows you ≥2 years (doctor, dentist, etc.)</div>
         <div class="extra-info hidden-detail">
-          <p><strong>Who can be a guarantor?</strong> A family doctor, dentist, pharmacist, judge, police officer, or a director of a funeral home – <em>or any professional listed in the guide</em>. They must have a valid Canadian passport.</p>
-          <p>👥 You also need <strong>2 references</strong> (name, address, phone) – they can be friends or neighbours, must have known you for at least 2 years. </p>
-          <p>If you can’t find a guarantor, you can use a <strong>guarantor waiver</strong> (but you need to go to a passport office in person).</p>
+          <p><strong>Guarantor:</strong> must have a valid Canadian passport. Also need <strong>2 references</strong> (friends, neighbours) known for 2 years.</p>
+          <p>If you can’t find a guarantor, you can apply in person with a guarantor waiver.</p>
         </div>
       </div>
 
       <!-- STEP 4 -->
-      <div class="step-card" onclick="toggleStep(this)" role="button" tabindex="0">
-        <div class="step-number"><span>4</span> PAYMENT & FEES</div>
-        <div class="step-title">💰 How to pay</div>
-        <div class="step-desc">5‑year passport: $120 · 10‑year passport: $160</div>
+      <div class="step-card" onclick="toggleStep(event, this)" role="button" tabindex="0">
+        <div class="step-header">
+          <span class="step-number-badge">4</span>
+          <span class="step-title">💰 Payment & fees</span>
+          <input type="checkbox" class="card-check" id="step4chk" aria-label="Mark step 4 done">
+        </div>
+        <div class="step-desc">5‑year: $120 · 10‑year: $160</div>
         <div class="extra-info hidden-detail">
-          <p><strong>Accepted payments:</strong></p>
-          <ul>
-            <li>Debit card, credit card, Visa Debit, or MasterCard Debit (in person).</li>
-            <li>Certified cheque or money order payable to "Receiver General for Canada" (if mailing).</li>
-            <li>No cash by mail. In some offices, exact cash is okay – but best to use card or cheque.</li>
-          </ul>
+          <p><strong>Accepted:</strong> debit, credit card, certified cheque or money order payable to "Receiver General for Canada".</p>
+          <p>In person: card or exact cash at some offices.</p>
         </div>
       </div>
 
       <!-- STEP 5 -->
-      <div class="step-card" onclick="toggleStep(this)" role="button" tabindex="0">
-        <div class="step-number"><span>5</span> SUBMIT APPLICATION</div>
-        <div class="step-title">📮 Mail or in person?</div>
-        <div class="step-desc">Two ways: drop it off or send by mail.</div>
+      <div class="step-card" onclick="toggleStep(event, this)" role="button" tabindex="0">
+        <div class="step-header">
+          <span class="step-number-badge">5</span>
+          <span class="step-title">📮 Submit application</span>
+          <input type="checkbox" class="card-check" id="step5chk" aria-label="Mark step 5 done">
+        </div>
+        <div class="step-desc">In person (recommended) or by mail.</div>
         <div class="extra-info hidden-detail">
-          <p>🏢 <strong>In person (recommended for seniors):</strong> bring everything to a <strong>Service Canada Centre</strong> that offers passport services. They’ll check your documents and return originals right away. Find one near you: call 1-800-567-6868.</p>
-          <p>📬 <strong>By mail:</strong> Send to Passport Program, Gatineau QC K1A 0G3. Use registered mail so it doesn’t get lost. Include original documents (they’ll mail them back – usually 2‑3 weeks).</p>
+          <p>🏢 <strong>In person:</strong> bring everything to a Service Canada Centre that offers passports. They return originals on the spot.</p>
+          <p>📬 <strong>By mail:</strong> send to Passport Program, Gatineau QC K1A 0G3. Use registered mail.</p>
         </div>
       </div>
     </div>
 
-    <!-- handy checklist (interactive) -->
+    <!-- Global checklist (still here as extra) -->
     <div class="checklist">
-      <h3>☑️ Your personal checklist (tap to tick)</h3>
+      <h3>📋 Master checklist (tap any)</h3>
       <div class="checklist-items">
-        <div class="check-item"><input type="checkbox" id="chk1"><label for="chk1">✅ Form PPTC 153 filled out (black ink)</label></div>
-        <div class="check-item"><input type="checkbox" id="chk2"><label for="chk2">🪪 Birth certificate or citizenship proof</label></div>
-        <div class="check-item"><input type="checkbox" id="chk3"><label for="chk3">🖼️ 2 identical passport photos, signed by guarantor</label></div>
-        <div class="check-item"><input type="checkbox" id="chk4"><label for="chk4">🆔 Photo ID (driver's licence / provincial card)</label></div>
-        <div class="check-item"><input type="checkbox" id="chk5"><label for="chk5">✍️ Guarantor section completed</label></div>
-        <div class="check-item"><input type="checkbox" id="chk6"><label for="chk6">👥 2 references (names & phone numbers)</label></div>
-        <div class="check-item"><input type="checkbox" id="chk7"><label for="chk7">💵 Payment (cheque or credit card ready)</label></div>
+        <div class="check-item"><input type="checkbox" id="global1"><label for="global1">✅ Form PPTC 153 filled (black ink)</label></div>
+        <div class="check-item"><input type="checkbox" id="global2"><label for="global2">🪪 Birth certificate or citizenship proof</label></div>
+        <div class="check-item"><input type="checkbox" id="global3"><label for="global3">🖼️ 2 identical passport photos, signed</label></div>
+        <div class="check-item"><input type="checkbox" id="global4"><label for="global4">🆔 Photo ID (driver's licence / provincial card)</label></div>
+        <div class="check-item"><input type="checkbox" id="global5"><label for="global5">✍️ Guarantor section completed</label></div>
+        <div class="check-item"><input type="checkbox" id="global6"><label for="global6">👥 2 references (names & phones)</label></div>
+        <div class="check-item"><input type="checkbox" id="global7"><label for="global7">💵 Payment ready</label></div>
       </div>
     </div>
 
-    <!-- BIG HELPFUL BUTTONS (non‑technical) -->
+    <!-- Big action buttons -->
     <div class="help-buttons">
-      <div class="help-btn" onclick="speakText()">🔊 Click to read aloud</div>
-      <div class="help-btn" onclick="window.location.href='tel:1-800-567-6868'">📞 Call passport help</div>
-      <div class="help-btn" onclick="findOffice()">📍 Find nearest office</div>
+      <div class="help-btn" onclick="speakText()">🔊 Read aloud</div>
+      <div class="help-btn" onclick="window.location.href='tel:1-800-567-6868'">📞 Call passport</div>
+      <div class="help-btn" onclick="findOffice()">📍 Find office</div>
     </div>
 
-    <!-- extra contact & large print info -->
+    <!-- contact panel -->
     <div class="contact-panel">
-      <h2>📌 Passport office finder & help</h2>
-      <div class="contact-row"><span>📞</span> <strong>1-800-567-6868</strong> (toll free, ask for large‑print forms)</div>
-      <div class="contact-row"><span>🕒</span> Monday to Friday, 8:30 am – 5 pm (your local time)</div>
-      <div class="contact-row"><span>🏛️</span> TTY (hearing impaired): <strong>1-866-255-7655</strong></div>
-      <div style="margin-top: 20px;">
-        <p>✉️ <strong>By mail:</strong> Passport Program, Gatineau QC K1A 0G3</p>
-        <p><em>Always keep copies of your documents.</em></p>
-      </div>
+      <h2>📌 More help</h2>
+      <div class="contact-row"><span>📞</span> <strong>1-800-567-6868</strong> (TTY: 1-866-255-7655)</div>
+      <div class="contact-row"><span>🕒</span> Mon–Fri, 8:30 am – 5 pm local</div>
+      <div class="contact-row"><span>✉️</span> Passport Program, Gatineau QC K1A 0G3</div>
     </div>
 
     <div class="note">
-      ⚠️ If you need help in a language other than English or French, call the same number and ask for an interpreter. It’s free.
+      ⚠️ Need an interpreter? Call the same number and ask. Free.
     </div>
 
-    <!-- simple explanation of next steps -->
-    <div style="background: white; border-radius: 30px; padding: 20px; border: 3px solid #81b5c9; margin: 15px 0;">
-      <p style="font-size: 2rem;">👉 <strong>After you submit:</strong> You'll get your new passport in the mail (usually 10-20 days for in-person, longer for mail). You can pay for express service if you need it faster.</p>
-    </div>
-
-    <!-- tiny footer -->
     <div class="footer">
-      <p>🍁 Government of Canada information simplified for seniors – always verify at Canada.ca/passport</p>
+      <p>🍁 Simplified for seniors – official info: Canada.ca/passport</p>
     </div>
   </div>
 </div>
 
-<!-- simple interactive javascript -->
+<!-- JavaScript with improved event handling -->
 <script>
-  // Toggle extra info (open/close) on step cards
-  function toggleStep(element) {
-    element.classList.toggle('open');
+  // toggle open/close on step card, but ignore if the click came directly from a checkbox
+  function toggleStep(event, card) {
+    // if the clicked element is a checkbox (or its label), do NOT toggle the card
+    if (event.target.tagName === 'INPUT' && event.target.type === 'checkbox') {
+      event.stopPropagation();  // avoid any side effects, but let checkbox work
+      return;
+    }
+    // otherwise toggle 'open' class
+    card.classList.toggle('open');
   }
 
-  // Text‑to‑speech for key instructions (simple demo, reads a short message)
+  // Text‑to‑speech (senior friendly)
   function speakText() {
     if ('speechSynthesis' in window) {
       var speech = new SpeechSynthesisUtterance();
       speech.text = 'Here are the steps to apply for a Canadian passport. First, get the application form PPTC 153. You need proof of citizenship, two photos, a guarantor, and two references. Then submit in person or by mail. For help call 1 800 567 6868.';
       speech.lang = 'en-US';
-      speech.rate = 0.9;   // slower for seniors
+      speech.rate = 0.9;
       speech.pitch = 1.1;
-      window.speechSynthesis.cancel(); // avoid overlapping
+      window.speechSynthesis.cancel();
       window.speechSynthesis.speak(speech);
     } else {
-      alert('Your browser does not support text to speech. Please call 1-800-567-6868 for help.');
+      alert('Please call 1-800-567-6868 for help.');
     }
   }
 
-  // simple office finder – opens service canada location search in new window
+  // open Service Canada office finder
   function findOffice() {
-    // open the official Service Canada office locator (passport offices)
     window.open('https://www.canada.ca/en/employment-social-development/corporate/portfolio/service-canada/find-passport-office.html', '_blank');
   }
 
-  // make step cards also accessible with keyboard (optional)
+  // keyboard accessibility for step cards (Enter/Space toggle)
   document.querySelectorAll('.step-card').forEach(card => {
-    card.addEventListener('keypress', function(e) {
+    card.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        toggleStep(this);
+        // simulate click but ignore checkbox (we just toggle class)
+        if (e.target.tagName !== 'INPUT') {
+          this.classList.toggle('open');
+        }
       }
     });
   });
 
-  // extra: checkboxes are fully functional, no extra JS needed
+  // also ensure that clicking on checkbox only checks, does not toggle open (already in toggleStep)
+  // make sure checkbox labels don't interfere – they are not used.
 </script>
 
-<!-- ensure that hidden-detail is toggled by CSS + JS class -->
 <style>
-  /* default hidden */
-  .step-card .hidden-detail { display: none; }
-  .step-card.open .hidden-detail { display: block; }
-  /* make cursor indicate clickable */
-  .step-card { cursor: pointer; }
+  /* additional fix for mobile touch */
+  .step-card input[type="checkbox"] {
+    min-width: 44px;
+    min-height: 44px;   /* easier to tap on mobile */
+  }
+  .card-check {
+    transform: scale(1.4);
+    margin-left: 5px;
+  }
+  @media (max-width: 480px) {
+    .step-header {
+      gap: 8px;
+    }
+  }
 </style>
 </body>
 </html>
