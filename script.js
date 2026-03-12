@@ -5,57 +5,93 @@ let currentLang = 'km'; // Default to Khmer
 const translations = {
     km: {
         mainTitle: "សាច់មាន់ស៊ូវឡាគី",
-        subTitle: "ជាមួយបាយក្រូចឆ្មា",
-        ingredientsTitle: "គ្រឿងផ្សំចាំបាច់",
+        subTitle: "រសជាតិដើមបែប Jimmy The Greek",
+        ingredientsTitle: "គ្រឿងផ្សំ (គ្រឿងសម្ងាត់)",
         ingredients: [
-            "សាច់មាន់ (ទ្រូង ឬភ្លៅ)",
-            "អង្ករ (គ្រាប់វែង ឬបាសម៉ាទី)",
-            "ប្រេងអូលីវ និងក្រូចឆ្មា",
-            "ខ្ទឹមស និងស្លឹកអូរីហ្គាណូ",
-            "នំបុ័ងពីតា និងទឹកជ្រលក់ត្សាត្ស៊ីគី"
+            "សាច់មាន់ (ទ្រូង ឬភ្លៅ បកស្បែក)",
+            "អង្ករ (គ្រាប់វែង ឬបាសម៉ាទី) សម្រាប់បាយក្រូចឆ្មា",
+            "ប្រេងអូលីវគុណភាពខ្ពស់ និងក្រូចឆ្មាស្រស់",
+            "ខ្ទឹមស, ស្លឹកអូរីហ្គាណូ, ថាម (Thyme) និងប៉ាព្រីកា",
+            "នំបុ័ងពីតា និងទឹកជ្រលក់ត្សាត្ស៊ីគី (Tzatziki)"
         ],
-        startLabel: "ចុច \"ចាប់ផ្តើម\" ដើម្បីចាប់ផ្តើម! ↓",
+        startLabel: "ត្រៀមខ្លួនសម្រាប់រសជាតិមេឌីទែរ៉ាណេពិតៗ? ↓",
         steps: [
-            { title: "រៀបចំសាច់មាន់", desc: "ហាន់សាច់មាន់ជាដុំៗឱ្យប៉ុនគ្នា។ ដាក់វាក្នុងចានធំមួយ។" },
-            { title: "ធ្វើទឹកម៉ារីណាត", desc: "លាយប្រេងអូលីវ ១/៤ ពែង, ទឹកក្រូចឆ្មា ១ ផ្លែ, ខ្ទឹមស ២ កំពឹស និងអូរីហ្គាណូឱ្យច្រើន។" },
-            { title: "ត្រាំសាច់", desc: "ចាក់ទឹកម៉ារីណាតលើសាច់មាន់។ ទុកវាចោល ៣០ នាទីក្នុងទូទឹកកក។" },
-            { title: "ដាំបាយ", desc: "ដាំបាយជាមួយអំបិលបន្តិច និងច្របាច់ក្រូចឆ្មា រហូតដល់ឆ្អិនងំល្អ។" },
-            { title: "អាំង", desc: "ដោតសាច់មាន់នឹងឈើ។ អាំងវា ១០ នាទីរហូតដល់ឡើងពណ៌មាស។" },
-            { title: "រួចរាល់!", desc: "រៀបសាច់មាន់លើបាយឱ្យស្អាត ជាមួយនំបុ័ងពីតាក្តៅៗ។ រីករាយនឹងអាហារល្ងាច!" }
+            { 
+                title: "១. ការជ្រើសរើស និងរៀបចំសាច់", 
+                desc: "ហាន់សាច់មាន់ជាដុំៗឱ្យប៉ុនៗគ្នាបំផុត។ នេះគឺជាអាថ៌កំបាំងដើម្បីឱ្យសាច់ទាំងអស់ឆ្អិនស្មើគ្នា និងរក្សាភាពទន់ល្មើយ។" 
+            },
+            { 
+                title: "២. ការធ្វើទឹកម៉ារីណាតដ៏អស្ចារ្យ", 
+                desc: "លាយប្រេងអូលីវ, ទឹកក្រូចឆ្មា, ខ្ទឹមសចិញ្ច្រាំ, អូរីហ្គាណូ, ថាម និងប៉ាព្រីកា។ វាស់ឱ្យត្រូវចំណុះ រួចកូរឱ្យសព្វរហូតដល់ឡើងក្លិនឈ្ងុយ។" 
+            },
+            { 
+                title: "៣. ការត្រាំឱ្យចូលជាតិ (សំខាន់!)", 
+                desc: "ចាក់ទឹកម៉ារីណាតលើសាច់ រួចច្របល់ឱ្យសព្វ។ ទុកក្នុងទូទឹកកកយ៉ាងតិច ៣០ នាទី។ កាន់តែយូរ កាន់តែឈ្ងុយដល់ក្នុងសាច់!" 
+            },
+            { 
+                title: "៤. បច្ចេកទេសដោតសាច់", 
+                desc: "ប្រសិនបើប្រើឈើដោត ត្រូវត្រាំទឹក ៣០ នាទីមុន។ ដោតសាច់ឆ្លាស់ជាមួយម្ទេសប្លោក និងខ្ទឹមបារាំង ដើម្បីបង្កើនសម្រស់ និងរសជាតិ។" 
+            },
+            { 
+                title: "៥. ការអាំង និងត្រួតពិនិត្យសីតុណ្ហភាព", 
+                desc: "អាំងលើកម្ដៅមធ្យម-ខ្ពស់ ១០-១២ នាទី។ ត្រូវប្រាកដថាសាច់ឆ្អិនដល់ ១៦៥°F (៧៤°C) ដើម្បីធានាសុវត្ថិភាព និងភាពឆ្ងាញ់។" 
+            },
+            { 
+                title: "៦. ជំហានចុងក្រោយ និងការរៀបចំ", 
+                desc: "ទុកសាច់ឱ្យសម្រាកប៉ុន្មាននាទីសិន។ បន្ថែមស្លឹកជីវ៉ាន់ស៊ុយស្រស់ និងប្រេងអូលីវពីលើ។ រៀបជាមួយបាយក្តៅៗ និងទឹកជ្រលក់!" 
+            }
         ],
         back: "ថយក្រោយ",
         next: "បន្ទាប់",
-        start: "ចាប់ផ្តើមធ្វើ",
-        finish: "រួចរាល់",
+        start: "ចាប់ផ្តើមធ្វើភ្លាម",
+        finish: "បញ្ចប់ការធ្វើ",
         audioBtn: "🔊 អានឱ្យស្តាប់",
-        footer: "បង្កើតឡើងសម្រាប់បទពិសោធន៍ធ្វើម្ហូបដ៏ងាយស្រួល។"
+        footer: "ដកស្រង់ចេញពីអាថ៌កំបាំងដ៏ល្បីរបស់ Jimmy The Greek"
     },
     en: {
         mainTitle: "Chicken Souvlaki",
-        subTitle: "with Lemon Rice",
-        ingredientsTitle: "The Basics",
+        subTitle: "Authentic Jimmy The Greek Style",
+        ingredientsTitle: "The Essential Ingredients",
         ingredients: [
-            "Chicken (Breasts or Thighs)",
-            "Rice (Long grain or Basmati)",
-            "Olive Oil & Lemon",
-            "Garlic & Oregano",
-            "Pita Bread & Tzatziki"
+            "Quality Chicken (Breast or Thigh)",
+            "Long-grain or Basmati Rice",
+            "Extra Virgin Olive Oil & Fresh Lemons",
+            "Garlic, Oregano, Thyme, & Paprika",
+            "Pita Bread & Tangy Tzatziki Sauce"
         ],
-        startLabel: "Tap \"Start\" to begin! ↓",
+        startLabel: "Ready to transport your taste buds to Greece? ↓",
         steps: [
-            { title: "Prep the Chicken", desc: "Cut the chicken into large, even pieces. Put them in a bowl." },
-            { title: "Make Marinade", desc: "Mix 1/4 cup olive oil, juice of 1 lemon, 2 cloves garlic, and lots of oregano." },
-            { title: "Marinate", desc: "Pour marinade over chicken. Let it sit for 30 minutes in the fridge." },
-            { title: "Cook the Rice", desc: "Boil rice with a pinch of salt and a squeeze of lemon until fluffy." },
-            { title: "Grill", desc: "Thread chicken on sticks. Grill for 10 minutes until golden brown." },
-            { title: "Finished!", desc: "Serve the chicken over a big bed of rice with warm pita bread. Enjoy!" }
+            { 
+                title: "1. The Art of Prep", 
+                desc: "Cut the chicken into perfectly consistent cubes. This 'secret' ensures every piece cooks evenly and stays incredibly succulent." 
+            },
+            { 
+                title: "2. Crafting the Symphony", 
+                desc: "Whisk olive oil, lemon juice, garlic, and herbs until fragrant. This blend is the soul of the authentic Greek flavor profile." 
+            },
+            { 
+                title: "3. Marination Mastery", 
+                desc: "Submerge the chicken fully. Chill for at least 30 minutes. The longer it rests, the deeper the aromatic flavors will penetrate." 
+            },
+            { 
+                title: "4. Skewering Nuances", 
+                desc: "If using wood, soak skewers for 30 minutes to prevent burning. Alternate chicken with colorful peppers and onions for the best result." 
+            },
+            { 
+                title: "5. Grilling to Perfection", 
+                desc: "Grill over medium-high heat for 10-12 mins. Aim for an internal temp of 165°F (74°C) to ensure it's safe and juicy." 
+            },
+            { 
+                title: "6. The Final Flourish", 
+                desc: "Let the meat rest for 5 minutes! Garnish with fresh parsley, lemon juice, and a drizzle of oil before serving over fluffy rice." 
+            }
         ],
-        back: "Back",
-        next: "Next",
-        start: "Start Cooking",
-        finish: "Finish",
+        back: "Go Back",
+        next: "Next Detail",
+        start: "Reveal Secrets",
+        finish: "Done!",
         audioBtn: "🔊 Read Aloud",
-        footer: "Created for an easy cooking experience."
+        footer: "Based on the famous secrets of Jimmy the Greek"
     }
 };
 
