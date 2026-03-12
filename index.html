@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chicken Souvlaki & Rice | Easy Recipe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Chicken Souvlaki</h1>
+        <p>with Lemon Rice</p>
+    </header>
+
+    <img src="hero.png" alt="Grilled Chicken Souvlaki with Rice" class="hero-img">
+
+    <div class="container">
+        <!-- Ingredients Screen -->
+        <div id="step-0" class="step active">
+            <div class="card">
+                <h2>The Basics</h2>
+                <ul>
+                    <li>Chicken (Breasts or Thighs)</li>
+                    <li>Rice (Long grain or Basmati)</li>
+                    <li>Olive Oil & Lemon</li>
+                    <li>Garlic & Oregano</li>
+                    <li>Pita Bread & Tzatziki</li>
+                </ul>
+            </div>
+            <p style="text-align: center; color: #666; font-weight: 600;">Tap "Start" to begin! ↓</p>
+        </div>
+
+        <!-- Step 1 -->
+        <div id="step-1" class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <h2>Prep the Chicken</h2>
+                <p>Cut the chicken into large, even pieces. Put them in a bowl.</p>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div id="step-2" class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <h2>Make Marinade</h2>
+                <p>Mix 1/4 cup olive oil, juice of 1 lemon, 2 cloves garlic, and lots of oregano.</p>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div id="step-3" class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <h2>Marinate</h2>
+                <p>Pour marinade over chicken. Let it sit for 30 minutes in the fridge.</p>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div id="step-4" class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <h2>Cook the Rice</h2>
+                <p>Boil rice with a pinch of salt and a squeeze of lemon until fluffy.</p>
+            </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div id="step-5" class="step">
+            <div class="step-num">5</div>
+            <div class="step-content">
+                <h2>Grill</h2>
+                <p>Thread chicken on sticks. Grill for 10 minutes until golden brown.</p>
+            </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div id="step-6" class="step">
+            <div class="step-num">6</div>
+            <div class="step-content">
+                <h2>Finished!</h2>
+                <p>Serve the chicken over a big bed of rice with warm pita bread. Enjoy!</p>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="navigation">
+            <button id="backBtn" class="btn-back" disabled onclick="changeStep(-1)">Back</button>
+            <button id="nextBtn" class="btn-next" onclick="changeStep(1)">Next</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created for an easy cooking experience.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
