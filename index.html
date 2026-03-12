@@ -1,16 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="km">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chicken Souvlaki & Rice | Easy Recipe</title>
+    <title>រូបមន្តសាច់មាន់ស៊ូវឡាគី និងបាយ | ងាយស្រួលធ្វើ</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Using Google Fonts for Khmer -->
+    <link href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@400;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
-        <h1>Chicken Souvlaki</h1>
-        <p>with Lemon Rice</p>
+        <div class="lang-toggle">
+            <button id="langBtn" onclick="toggleLanguage()">English</button>
+        </div>
+        <h1 id="mainTitle">សាច់មាន់ស៊ូវឡាគី</h1>
+        <p id="subTitle">ជាមួយបាយក្រូចឆ្មា</p>
     </header>
 
     <img src="hero.png" alt="Grilled Chicken Souvlaki with Rice" class="hero-img">
@@ -19,24 +24,27 @@
         <!-- Ingredients Screen -->
         <div id="step-0" class="step active">
             <div class="card">
-                <h2>The Basics</h2>
-                <ul>
-                    <li>Chicken (Breasts or Thighs)</li>
-                    <li>Rice (Long grain or Basmati)</li>
-                    <li>Olive Oil & Lemon</li>
-                    <li>Garlic & Oregano</li>
-                    <li>Pita Bread & Tzatziki</li>
+                <h2 id="ingredientsTitle">គ្រឿងផ្សំចាំបាច់</h2>
+                <ul id="ingredientsList">
+                    <li>សាច់មាន់ (ទ្រូង ឬភ្លៅ)</li>
+                    <li>អង្ករ (គ្រាប់វែង ឬបាសម៉ាទី)</li>
+                    <li>ប្រេងអូលីវ និងក្រូចឆ្មា</li>
+                    <li>ខ្ទឹមស និងស្លឹកអូរីហ្គាណូ</li>
+                    <li>នំបុ័ងពីតា និងទឹកជ្រលក់ត្សាត្ស៊ីគី</li>
                 </ul>
             </div>
-            <p style="text-align: center; color: #666; font-weight: 600;">Tap "Start" to begin! ↓</p>
+            <p id="startLabel" style="text-align: center; color: #666; font-weight: 600;">ចុច "ចាប់ផ្តើម" ដើម្បីចាប់ផ្តើម! ↓</p>
         </div>
 
         <!-- Step 1 -->
         <div id="step-1" class="step">
             <div class="step-num">1</div>
             <div class="step-content">
-                <h2>Prep the Chicken</h2>
-                <p>Cut the chicken into large, even pieces. Put them in a bowl.</p>
+                <div class="audio-control">
+                    <button class="btn-audio" onclick="readStep()">🔊 អានឱ្យស្តាប់</button>
+                </div>
+                <h2 id="step1Title">រៀបចំសាច់មាន់</h2>
+                <p id="step1Desc">ហាន់សាច់មាន់ជាដុំៗឱ្យប៉ុនគ្នា។ ដាក់វាក្នុងចានធំមួយ។</p>
             </div>
         </div>
 
@@ -44,8 +52,11 @@
         <div id="step-2" class="step">
             <div class="step-num">2</div>
             <div class="step-content">
-                <h2>Make Marinade</h2>
-                <p>Mix 1/4 cup olive oil, juice of 1 lemon, 2 cloves garlic, and lots of oregano.</p>
+                <div class="audio-control">
+                    <button class="btn-audio" onclick="readStep()">🔊 អានឱ្យស្តាប់</button>
+                </div>
+                <h2 id="step2Title">ធ្វើទឹកម៉ារីណាត</h2>
+                <p id="step2Desc">លាយប្រេងអូលីវ ១/៤ ពែង, ទឹកក្រូចឆ្មា ១ ផ្លែ, ខ្ទឹមស ២ កំពឹស និងអូរីហ្គាណូឱ្យច្រើន។</p>
             </div>
         </div>
 
@@ -53,8 +64,11 @@
         <div id="step-3" class="step">
             <div class="step-num">3</div>
             <div class="step-content">
-                <h2>Marinate</h2>
-                <p>Pour marinade over chicken. Let it sit for 30 minutes in the fridge.</p>
+                <div class="audio-control">
+                    <button class="btn-audio" onclick="readStep()">🔊 អានឱ្យស្តាប់</button>
+                </div>
+                <h2 id="step3Title">ត្រាំសាច់</h2>
+                <p id="step3Desc">ចាក់ទឹកម៉ារីណាតលើសាច់មាន់។ ទុកវាចោល ៣០ នាទីក្នុងទូទឹកកក។</p>
             </div>
         </div>
 
@@ -62,8 +76,11 @@
         <div id="step-4" class="step">
             <div class="step-num">4</div>
             <div class="step-content">
-                <h2>Cook the Rice</h2>
-                <p>Boil rice with a pinch of salt and a squeeze of lemon until fluffy.</p>
+                <div class="audio-control">
+                    <button class="btn-audio" onclick="readStep()">🔊 អានឱ្យស្តាប់</button>
+                </div>
+                <h2 id="step4Title">ដាំបាយ</h2>
+                <p id="step4Desc">ដាំបាយជាមួយអំបិលបន្តិច និងច្របាច់ក្រូចឆ្មា រហូតដល់ឆ្អិនងំល្អ។</p>
             </div>
         </div>
 
@@ -71,8 +88,11 @@
         <div id="step-5" class="step">
             <div class="step-num">5</div>
             <div class="step-content">
-                <h2>Grill</h2>
-                <p>Thread chicken on sticks. Grill for 10 minutes until golden brown.</p>
+                <div class="audio-control">
+                    <button class="btn-audio" onclick="readStep()">🔊 អានឱ្យស្តាប់</button>
+                </div>
+                <h2 id="step5Title">អាំង</h2>
+                <p id="step5Desc">ដោតសាច់មាន់នឹងឈើ។ អាំងវា ១០ នាទីរហូតដល់ឡើងពណ៌មាស។</p>
             </div>
         </div>
 
@@ -80,20 +100,23 @@
         <div id="step-6" class="step">
             <div class="step-num">6</div>
             <div class="step-content">
-                <h2>Finished!</h2>
-                <p>Serve the chicken over a big bed of rice with warm pita bread. Enjoy!</p>
+                <div class="audio-control">
+                    <button class="btn-audio" onclick="readStep()">🔊 អានឱ្យស្តាប់</button>
+                </div>
+                <h2 id="step6Title">រួចរាល់!</h2>
+                <p id="step6Desc">រៀបសាច់មាន់លើបាយឱ្យស្អាត ជាមួយនំបុ័ងពីតាក្តៅៗ។ រីករាយនឹងអាហារល្ងាច!</p>
             </div>
         </div>
 
         <!-- Navigation -->
         <div class="navigation">
-            <button id="backBtn" class="btn-back" disabled onclick="changeStep(-1)">Back</button>
-            <button id="nextBtn" class="btn-next" onclick="changeStep(1)">Next</button>
+            <button id="backBtn" class="btn-back" disabled onclick="changeStep(-1)">ថយក្រោយ</button>
+            <button id="nextBtn" class="btn-next" onclick="changeStep(1)">ចាប់ផ្តើមធ្វើ</button>
         </div>
     </div>
 
     <footer>
-        <p>Created for an easy cooking experience.</p>
+        <p id="footerText">បង្កើតឡើងសម្រាប់បទពិសោធន៍ធ្វើម្ហូបដ៏ងាយស្រួល។</p>
     </footer>
 
     <script src="script.js"></script>
